@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Aniversário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .container p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .container a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .container a:hover {
+            background-color: #0056b3;
+        }
+        .info-section {
+            width: 90%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .info-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .info-section p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .location-button {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .location-button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .location-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="mini.jpg" alt="Foto de Convite">
+        <p>
+            Olá! Estou muito feliz por vos convidar para a minha festa de 18 anos e para a celebração dos 50 anos do meu pai.
+            Será um momento especial que queremos partilhar contigo.
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLEF9xmX7wgfBjW7-ePcVI0MtOa9RfnUPYpPbbUbb61-VfZg/viewform?usp=sf_link" target="_blank">Confirme sua presença</a>
+    </div>
+
+    <div class="info-section">
+        <h2>Informações do Evento</h2>
+        <p><strong>Data:</strong> 4 de agosto</p>
+        <p><strong>Horário:</strong> 13:00</p>
+        <p><strong>Local:</strong> Quinta D'As Raparigas</p>
+        <p><strong>Preço:</strong> 25€ por pessoa</p>
+        <a href="https://www.google.pt/maps/place/Quinta+D'As+Raparigas/@41.2259483,-8.6357866,17z/data=!3m1!4b1!4m6!3m5!1s0xd24664673d22a15:0xe057f322f28e61c4!8m2!3d41.2259483!4d-8.6332063!16s%2Fg%2F1tdgljsx?entry=ttu" target="_blank" class="location-button">
+            <img src="icons8-mapa-50.png" alt="Ícone de Localização"> Ver no Google Maps
+        </a>
+    </div>
+
+    <!-- Inclui a biblioteca de confetes -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Função para disparar confetes
+        function shootConfetti() {
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        // Disparar confetes quando a página carregar
+        window.onload = shootConfetti;
+    </script>
+</body>
+</html>
